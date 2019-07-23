@@ -1,8 +1,8 @@
 # Spike MMIO Plugin Examples
 
-This repository contains examples of Spike MMIO plugins written in C and C++. Also included is a simple Debian-based
-Dockerfile that will build and run the examples to ensure they are working. To run the full test issue the following
-command from the top-level directory of the repository
+This repository contains examples of Spike MMIO plugins written in C, C++, and Rust. Also included is a simple
+Debian-based Dockerfile that will build and run the examples to ensure they are working. To run the full test issue the
+following command from the top-level directory of the repository
 
     docker build .
 
@@ -14,9 +14,14 @@ implementing the plugin and a very simple [Makefile](example_c/Makefile) to buil
 loaded by Spike.
 
 ## C++ Example
-The [example_cpp](example_ppc) directory contains the C++ plugin. It simply has a [plugin.cpp](example_cpp/plugin.cpp)
+The [example_cpp](example_cpp) directory contains the C++ plugin. It simply has a [plugin.cpp](example_cpp/plugin.cpp)
 file implementing the plugin and a very simple [Makefile](example_cpp/Makefile) to build it into a shared object that
 can be loaded by Spike.
+
+## Rust Example
+The [example_rust](example_rust) directory contains the Rust plugin. It simply has a [lib.rs](example_rust/src/lib.rs)
+file implementing the plugin and a very simple [Cargo.toml](example_rust/Cargo.toml) to build it into a shared object
+that can be loaded by Spike.
 
 ## Plugin Test
 The [plugin_test](plugin_test) directory contains a simple assembly-language driver to test the functionality of the C
@@ -80,3 +85,9 @@ load with the name `my_plugin`, the following code can be used:
 The plugin shared object can be built using `g++` with the `-shared` and `-fPIC` flags.
 
 See the [example_cpp](example_cpp) directory in this repository for a complete example.
+
+## Rust Plugins
+Rust needs to implement its own version of `riscv/mmio_plugin.h` to define the C interface in a way that Rust
+understands. After that is done, implementing the plugin is fairly straightforward.
+
+See the [example_rust](example_rust) directory in this repository for a complete example.

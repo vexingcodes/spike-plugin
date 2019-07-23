@@ -1,0 +1,11 @@
+[package]
+name = "example_rust"
+version = "0.1.0"
+
+[dependencies]
+ctor = "0.1.9"
+libc = "0.2.60"
+
+[lib]
+name = "plugin"
+crate-type = ["cdylib"]
