@@ -14,7 +14,7 @@ RUN dpkg --add-architecture riscv64 \
  && rm -rf /var/lib/apt/lists/*
 
 # Compile riscv-isa-sim from source.
-RUN git clone --branch mmio-plugin https://github.com/vexingcodes/riscv-isa-sim.git \
+RUN git clone https://github.com/riscv/riscv-isa-sim.git \
  && cd riscv-isa-sim \
  && ./configure \
  && make -j$(( $(nproc) + 1 )) \
